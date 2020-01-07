@@ -5,7 +5,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    redirect:"login"
+    redirect: "login"
   },
   // 重定向到login
   {
@@ -13,7 +13,6 @@ const routes = [
     name: "Login",
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/login/index")
-
   },
   {
     path: "/about",
