@@ -8,7 +8,8 @@ module.exports = {
     // outputDir: process.env.NODE_ENV === "production" ? "dist" : "/",
 
     // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码。这个值会在 @vue/cli-plugin-eslint 被安装之后生效。
-    lintOnSave: process.env.NODE_ENV !== "production",
+    // lintOnSave: process.env.NODE_ENV !== "production",
+    lintOnSave:false,
 
     // chainWebpack
     chainWebpack:(config)=>{
@@ -68,23 +69,17 @@ module.exports = {
   devServer: {
     host: "localhost",
     port: 8081, // 端口号
-    https: false,
+    https: false,   //是否使用https协议
+    hotOnly: false,
     open: true, //配置自动启动浏览器
 
-    // 配置多个代理
+    // 配置多个代理  解决跨域问题
     proxy: {
-      "/api": {
-        target: "http://localhost:3000", // 本地模拟数据服务器
+      "/szhiqu": {
+        target: "http://192.168.0.82", // 本地模拟数据服务器
         changeOrigin: true,
         pathRewrite: {
-          "^/api": "" // 去掉接口地址中的api字符串
-        }
-      },
-      "/foo": {
-        target: "http://localhost:8080", // 本地模拟数据服务器
-        changeOrigin: true,
-        pathRewrite: {
-          "^/foo": "" // 去掉接口地址中的foo字符串
+          "^/szhiqu": "" // 去掉接口地址中的devapi字符串
         }
       }
     }

@@ -7,12 +7,23 @@
   </div>
 </template>
 <script>
-import login from "../../api/login"
-import service from "../../utils/request"
+// import {login} from "@/api/login"
+
 import {reactive,ref,isRef,toRefs, onMounted} from "@vue/composition-api"
 export default {
     name:"login",
-    setup(props,context){
+    setup(props,{root}){
+        console.log(props);
+        // console.log(context);
+        /**
+         * root: Vue  ===this
+            parent: VueComponent
+            refs: Object
+            attrs: Object
+            listeners: Object
+            isServer: false
+            ssrContext: undefined
+         */
         // 对象类型和其他引用类型需要用reactive
         // 基础类型，需要用ref,值得注意的是，取值是需要访问  user_name.value
         const user_name = ref(" ");
@@ -33,7 +44,14 @@ export default {
         *声明函数
          */
         const login=(()=>{
-            console.log("登录函数");
+            // let data={
+            //     username:"111111@qq.com"
+            // }
+           //login(data);
+            root.$router.push({
+                name:"Console"
+            })
+
         })
 
         // 最后声明的东西需要return
