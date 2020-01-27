@@ -17,9 +17,17 @@ const routes = [
   {
     path: "/console",
     name: "Console",
+    redirect: "index",
     component: () =>
-      import(/* webpackChunkName: "login" */ "../views/console/index")
-  },
+      import(/* webpackChunkName: "login" */ "../views/Layout/index"),
+      children: [{
+        path: "/index",
+        name: "index",
+        component: () =>
+                      import("../views/console/index")
+        // meta: { title: "病种", icon: "table" }
+      }]
+  }
 ];
 
 const router = new VueRouter({

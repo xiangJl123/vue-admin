@@ -1,6 +1,6 @@
 <template>
     <div>
-        主页
+        console主页fff
     </div>
 </template>
 <script>
